@@ -55,7 +55,7 @@ SQL statement to **create the above database and table**:
 
 You'll also need a **test user**:
 
-    mysql> INSERT INTO `users` (username, email, password, roles) VALUES (
+    mysql> INSERT INTO `users` (username, email, password, roles, is_active) VALUES (
         'test', 'test@test.com', '$2y$10$k5O1HnSI8N0ORJQnMnFpR.Z0.r7nx4Epk0a8J3d/sCdATF0BStBKe', 'ROLE_USER', '1'
     );
 
