@@ -9,3 +9,20 @@ routes:
   test:
     pattern:  /test
     defaults: {_controller:  'TestController:indexAction' }
+
+  # Article RESTful resource
+  articles:
+    pattern:  /articles
+    defaults: { _controller: 'ArticleController:indexAction' }
+  articles_create:
+    pattern:  /articles
+    defaults: { _controller: 'ArticleController:createAction' }
+    method:   'POST'
+  articles_update:
+    pattern:  /articles/{id}
+    defaults: { _controller: 'ArticleController:updateAction' }
+    method:   'PUT'
+  articles_delete:
+    pattern:  /articles/{id}
+    defaults: { _controller: 'ArticleController:deleteAction' }
+    method:   'DELETE'

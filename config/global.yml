@@ -17,6 +17,7 @@ auryn:
   # Interfaces to 'alias' to concrete objects
   alias:
     "App\TestInjection\TestInterface": "App\TestInjection\TestClass"
+    "App\Model\Repository\ArticleRepositoryInterface": "App\Model\Repository\ArticleRepository"
   # Classes to 'delegate' the request for instantiation/injection of (to factory methods for example)
   delegate:
     "Doctrine\ORM\EntityManager": "Doctrine\ORM\EntityManager::create"
