@@ -1,0 +1,151 @@
+/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+body {
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #1b98f8;
+}
+
+div > :first-child {
+    margin-top: 0;
+}
+
+body > div {
+    height: 100vh;
+    max-height: 100vh;
+}
+
+/*
+ * -- HELPER STYLES --
+ * Over-riding some of the .pure-button styles to make my buttons look unique
+ */
+.form-buttons .pure-button {
+    border-radius: 10px;
+}
+.new-button {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #666;
+}
+.save-button {
+    color: #fff;
+    background: #1b98f8;
+}
+.delete-button {
+    color: #fff;
+    background: #d01b1b;
+}
+
+/*
+ * -- REGIONS --
+ * Primary region styles
+ */
+#menu {
+    background: #999;
+}
+#menu,
+#menu a {
+    color: #fff;
+}
+#menu ul {
+    list-style: none;
+    padding: 16px;
+    margin: 0;
+}
+#menu li {
+    line-height: 32px;
+}
+#menu .count {
+    color: #000;
+}
+
+#main {
+    
+}
+
+#list {
+    background: #ccc;
+}
+
+#content {
+    /*padding: 16px;*/
+}
+
+/*
+ * -- LIST --
+ * List style
+ */
+.item-list {
+    
+}
+
+.item-list .item {
+    padding: 16px;
+    border-bottom: solid 1px #999;
+}
+.item-list .item:last-child {
+    border-bottom: none;
+}
+
+.item-list > .item > * {
+    line-height: 32px;
+    margin: 0;
+}
+.item-title {
+    
+}
+.item-subtitle {
+    
+}
+.item-summary {
+    
+}
+
+/*
+ * -- FORM --
+ * Form style
+ */
+.form-container {
+    padding: 16px;
+}
+
+.form-title {
+    margin: 0;
+}
+
+.form-buttons {
+    margin: 16px 0;
+}
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 48em) {
+    #list {
+        position: relative;
+        height: 100vh;
+    }
+
+    .item-list {
+        position: absolute;
+        overflow: auto;
+        height: 100vh;
+        width: 100%;
+    }
+}
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ * On desktops and other large-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 60em) {
+
+}

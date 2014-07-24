@@ -21,7 +21,7 @@ class HomeController
     {
         if ($sc->isGranted('IS_AUTHENTICATED_FULLY'))
         {
-            return new RedirectResponse($urlgen->generate('home'));
+            return new RedirectResponse('/index.html');
         }
         else
         {

@@ -10,7 +10,7 @@ routes:
     pattern:  /test
     defaults: {_controller:  'TestController:indexAction' }
 
-  # Article RESTful resource
+  # Article RESTful resource (Index + CRUD)
   articles:
     pattern:  /articles
     defaults: { _controller: 'ArticleController:indexAction' }
@@ -18,6 +18,9 @@ routes:
     pattern:  /articles
     defaults: { _controller: 'ArticleController:createAction' }
     method:   'POST'
+  articles_retrieve:
+    pattern:  /articles/{id}
+    defaults: { _controller: 'ArticleController:retrieveAction' }
   articles_update:
     pattern:  /articles/{id}
     defaults: { _controller: 'ArticleController:updateAction' }

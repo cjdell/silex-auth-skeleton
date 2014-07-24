@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Single Page Application hence this file does not run through PHP pipeline, though it could if required -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Silex Auth Skeleton - SPA</title>
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Pure CSS -->
+    <link rel="stylesheet" href="lib/pure/pure-min.css">
+    <link rel="stylesheet" href="lib/pure/grids-responsive-min.css">
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body ng-app="silex-auth-skeleton">
+
+    <div class="pure-g">
+        <div id="menu" class="pure-u-1 pure-u-md-1-6">
+            <ul>
+                <li><a ui-sref="dashboard">Dashboard</a></li>
+                <li><a ui-sref="articles.new">Articles<span class="count" ng-show="itemCounts.Article"> ({{itemCounts.Article}})</span></a></li>
+                <li><a ui-sref="another">Another</a></li>
+            </ul>
+        </div>
+
+        <div id="main" class="pure-u-1 pure-u-md-5-6">
+            <div ui-view><!-- Templates specified in router (app.js) get injected here --></div>
+        </div>
+    </div>
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+
+</body>
+</html>

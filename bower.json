@@ -1,0 +1,14 @@
+{
+  "name": "silex-auth-skeleton",
+  "version": "0.0.0",
+  "description": "Silex Auth Skeleton",
+  "main": "web/index.php",
+  "license": "WTFPL (Do What The Fuck You Want To Public License)",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.2.20",
+    "angular-ui-router": "~0.2.10",
+    "angular-resource": "~1.2.20",
+    "pure": "~0.5.0"
+  }
+}

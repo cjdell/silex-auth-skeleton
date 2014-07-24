@@ -13,6 +13,7 @@ use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider,
     Doctrine\ORM\Mapping\Driver\AnnotationDriver,
     Doctrine\Common\Annotations\AnnotationReader,
     Silex\Provider\UrlGeneratorServiceProvider,
+    Symfony\Component\HttpFoundation\Request,
     Silex\Provider\SecurityServiceProvider,
     Silex\Provider\DoctrineServiceProvider,
     Silex\Provider\SessionServiceProvider,
@@ -143,6 +144,18 @@ class Application extends \Silex\Application
             $security = $app['security'];
             return $security->isGranted($role);
         }));
+
+        // Deserialise JSON request content before the controllers see it. Necessary for REST API
+        $app->before(function (Request $request) {
+            if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+                $data = json_decode($request->getContent(), true);
+                $request->data = $data;
+            }
+            else {
+                // Fallback to standard form encoding
+                $request->data = $request->request->all();
+            }
+        });
     }
     
     /**

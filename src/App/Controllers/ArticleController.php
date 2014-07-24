@@ -18,14 +18,21 @@ class ArticleController
 
     public function createAction(ArticleRepositoryInterface $ar, Request $req)
     {
-        $article = $ar->createArticle($req->request->all());
+        $article = $ar->createArticle($req->data);
+
+        return new JsonResponse($article);
+    }
+
+    public function retrieveAction(ArticleRepositoryInterface $ar, Request $req, $id)
+    {
+        $article = $ar->loadArticleById($id);
 
         return new JsonResponse($article);
     }
 
     public function updateAction(ArticleRepositoryInterface $ar, Request $req, $id)
     {
-        $article = $ar->updateArticle($id, $req->request->all());
+        $article = $ar->updateArticle($id, $req->data);
         
         return new JsonResponse($article);
     }
