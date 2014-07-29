@@ -14,10 +14,16 @@ auryn:
     - "db"
     - "orm.em"
     - "url_generator"
+    - "security.encoder.digest"
+    - "api_key.encoder"
   # Interfaces to 'alias' to concrete objects
   alias:
     "App\TestInjection\TestInterface": "App\TestInjection\TestClass"
     "App\Model\Repository\ArticleRepositoryInterface": "App\Model\Repository\ArticleRepository"
+    "App\Model\Service\ApiAuthServiceInterface": "App\Model\Service\ApiAuthService"
+    "App\Model\Service\ApiKeyUserProviderInterface": "App\Model\Repository\UserRepository"
+    "App\Model\Service\SaltedPasswordEncoderInterface": "App\Model\Service\SaltedPasswordEncoder"
+    "App\Model\Service\SaltLessPasswordEncoderInterface": "App\Model\Service\SaltLessPasswordEncoder"
   # Classes to 'delegate' the request for instantiation/injection of (to factory methods for example)
   delegate:
     "Doctrine\ORM\EntityManager": "Doctrine\ORM\EntityManager::create"

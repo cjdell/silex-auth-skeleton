@@ -1,7 +1,7 @@
 security:
   firewalls:
     default:
-      pattern:   ^/.*$
+      pattern:   ^((?!api).)*$
       anonymous: true
       form:
         login_path: /login
@@ -11,8 +11,19 @@ security:
       logout:
         logout_path:        /logout
         invalidate_session: false
+    api_secured:
+      pattern:    ^/api/articles
+      api_key:    true
+      stateless:  true
+    # secured_area:
+    #   pattern: ^/articles
+    #   stateless: true
+    #   simple_preauth:
+    #     authenticator: apikey_authenticator
   heirarchy: 
     - [ 'ROLE_ADMIN', 'ROLE_USER' ]
   access_rules:
     - [ '^/login$', 'IS_AUTHENTICATED_ANONYMOUSLY' ]
+    - [ '^/auth', 'IS_AUTHENTICATED_ANONYMOUSLY' ]
+    # - [ '^/articles', 'IS_AUTHENTICATED_ANONYMOUSLY' ]
     - [ '^/.+$', 'ROLE_USER' ]

@@ -1,3 +1,15 @@
+app.controller('SignInController', function($scope, $state, $stateParams, AuthService) {
+  console.log($stateParams);
+
+  $scope.signIn = function() {
+    AuthService.signIn($scope.user.username, $scope.user.password, signedIn);
+  }
+
+  function signedIn() {
+    $state.go($stateParams.attemptedStateName, JSON.parse(atob(decodeURI($stateParams.attemptedStateParams))));
+  }
+});
+
 app.controller('ArticlesController', function($scope, $state, $stateParams, Article) {
   function init() {
     $scope.refresh();

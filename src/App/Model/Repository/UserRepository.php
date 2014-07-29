@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException,
  *
  * @package App\Model\Repository
  */
-class UserRepository extends EntityRepository implements UserProviderInterface
+class UserRepository extends EntityRepository implements UserProviderInterface, \App\Model\Service\ApiKeyUserProviderInterface
 {
     /**
      * Used automatically from the silex login process
@@ -59,6 +59,17 @@ class UserRepository extends EntityRepository implements UserProviderInterface
     }
 
     /**
+     * Load user by an API key
+     *
+     * @param string $apiKey the user's API key
+     * @return Symfony\Component\Security\Core\User\UserInterface
+     */
+    public function loadUserByApiKey($apiKey)
+    {
+        return $this->findOneBy(array('apiKey' => $apiKey));
+    }
+
+    /**
      * Used automatically by silex on every new request
      *
      * @param UserInterface $user
@@ -75,6 +86,17 @@ class UserRepository extends EntityRepository implements UserProviderInterface
         }
 
         return $this->loadUserByUsername($user->getEmail());
+    }
+
+    public function setApiKey($id, $apiKey)
+    {
+        $user = $this->findOneBy(array('id' => $id));
+
+        $user->setApiKey($apiKey);
+
+        $this->getEntityManager()->flush($user);
+
+        return $user;
     }
 
     /**

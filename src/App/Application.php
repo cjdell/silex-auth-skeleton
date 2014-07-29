@@ -8,12 +8,15 @@
 namespace App;
 
 use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider,
-    Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder,
     Symfony\Component\Security\Core\SecurityContext,
     Doctrine\ORM\Mapping\Driver\AnnotationDriver,
     Doctrine\Common\Annotations\AnnotationReader,
     Silex\Provider\UrlGeneratorServiceProvider,
+    App\Model\Service\PasswordEncoderProvider,
+    App\Model\Service\SaltLessPasswordEncoder,
     Symfony\Component\HttpFoundation\Request,
+    App\Model\Service\SaltedPasswordEncoder,
+    App\Model\Service\ApiKeyServiceProvider,
     Silex\Provider\SecurityServiceProvider,
     Silex\Provider\DoctrineServiceProvider,
     Silex\Provider\SessionServiceProvider,
@@ -185,8 +188,19 @@ class Application extends \Silex\Application
 
         $app = $this;
         $app['security.encoder.digest'] = $app->share(function() {
-            return new BCryptPasswordEncoder(10);
+            return new SaltedPasswordEncoder(10);
         });
+
+        // API firewall requires a saltless password encoder
+        $app['api_key.encoder'] = $app->share(function() {
+            return new SaltLessPasswordEncoder(10);
+        });
+
+        // API user provider is the same as for the default firewall
+        $app['api_key.user_provider'] = $firewalls['default']['users'];
+
+        // Register the service that will authenticate access to the API firewall
+        $app->register(new ApiKeyServiceProvider());
     }
 
     /**

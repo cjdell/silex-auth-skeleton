@@ -1,0 +1,25 @@
+<div class="form-container">
+            
+    <h1 class="form-title">Sign in</h1>
+
+    <p>You need to sign in to access this area. Please sign in below.</p>
+
+    <form class="pure-form pure-form-aligned" ng-submit="signIn()">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="username-input">Username</label>
+                <input id="username-input" type="text" placeholder="Username" ng-model="user.username">
+            </div>
+
+            <div class="pure-control-group">
+                <label for="password-input">Password</label>
+                <input id="password-input" type="password" placeholder="Password" ng-model="user.password">
+            </div>
+        </fieldset>
+
+        <div class="form-buttons">
+            <button class="save-button pure-button" ng-click="signIn()">Login</button>
+        </div>
+    </form>
+
+</div>

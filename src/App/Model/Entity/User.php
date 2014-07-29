@@ -58,6 +58,13 @@ class User implements AdvancedUserInterface
     private $isActive;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="api_key", type="string", length=100, nullable=false)
+     */
+    private $apiKey = '';
+
+    /**
      * Constructor sets up default values
      */
     public function __construct($id, $username, $email, $password, array $roles = array(), $enabled = true, $userNonExpired = true, $credentialsNonExpired = true, $userNonLocked = true)
@@ -258,5 +265,29 @@ class User implements AdvancedUserInterface
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Set API Key
+     *
+     * @param string $apiKey
+     *
+     * @return User
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * Get API Key
+     *
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
     }
 }

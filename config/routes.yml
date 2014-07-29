@@ -12,20 +12,29 @@ routes:
 
   # Article RESTful resource (Index + CRUD)
   articles:
-    pattern:  /articles
+    pattern:  /api/articles
     defaults: { _controller: 'ArticleController:indexAction' }
   articles_create:
-    pattern:  /articles
+    pattern:  /api/articles
     defaults: { _controller: 'ArticleController:createAction' }
     method:   'POST'
   articles_retrieve:
-    pattern:  /articles/{id}
+    pattern:  /api/articles/{id}
     defaults: { _controller: 'ArticleController:retrieveAction' }
   articles_update:
-    pattern:  /articles/{id}
+    pattern:  /api/articles/{id}
     defaults: { _controller: 'ArticleController:updateAction' }
     method:   'PUT'
   articles_delete:
-    pattern:  /articles/{id}
+    pattern:  /api/articles/{id}
     defaults: { _controller: 'ArticleController:deleteAction' }
     method:   'DELETE'
+
+  auth_sign_in:
+    pattern:  /auth/sign_in
+    defaults: { _controller: 'AuthController:signInAction' }
+    method:   'POST'
+  auth_get_api_key:
+    pattern:  /auth/get_api_key
+    defaults: { _controller: 'AuthController:getApiKeyAction' }
+    method:   'POST'
